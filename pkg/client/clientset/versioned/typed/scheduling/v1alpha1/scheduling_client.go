@@ -27,24 +27,24 @@ import (
 	rest "k8s.io/client-go/rest"
 )
 
-type TopologyV1alpha1Interface interface {
+type SchedulingV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	ResourcePoliciesGetter
 }
 
-// TopologyV1alpha1Client is used to interact with features provided by the topology.node.k8s.io group.
-type TopologyV1alpha1Client struct {
+// SchedulingV1alpha1Client is used to interact with features provided by the scheduling.x-k8s.io group.
+type SchedulingV1alpha1Client struct {
 	restClient rest.Interface
 }
 
-func (c *TopologyV1alpha1Client) ResourcePolicies(namespace string) ResourcePolicyInterface {
+func (c *SchedulingV1alpha1Client) ResourcePolicies(namespace string) ResourcePolicyInterface {
 	return newResourcePolicies(c, namespace)
 }
 
-// NewForConfig creates a new TopologyV1alpha1Client for the given config.
+// NewForConfig creates a new SchedulingV1alpha1Client for the given config.
 // NewForConfig is equivalent to NewForConfigAndClient(c, httpClient),
 // where httpClient was generated with rest.HTTPClientFor(c).
-func NewForConfig(c *rest.Config) (*TopologyV1alpha1Client, error) {
+func NewForConfig(c *rest.Config) (*SchedulingV1alpha1Client, error) {
 	config := *c
 	setConfigDefaults(&config)
 	httpClient, err := rest.HTTPClientFor(&config)
@@ -54,21 +54,21 @@ func NewForConfig(c *rest.Config) (*TopologyV1alpha1Client, error) {
 	return NewForConfigAndClient(&config, httpClient)
 }
 
-// NewForConfigAndClient creates a new TopologyV1alpha1Client for the given config and http client.
+// NewForConfigAndClient creates a new SchedulingV1alpha1Client for the given config and http client.
 // Note the http client provided takes precedence over the configured transport values.
-func NewForConfigAndClient(c *rest.Config, h *http.Client) (*TopologyV1alpha1Client, error) {
+func NewForConfigAndClient(c *rest.Config, h *http.Client) (*SchedulingV1alpha1Client, error) {
 	config := *c
 	setConfigDefaults(&config)
 	client, err := rest.RESTClientForConfigAndClient(&config, h)
 	if err != nil {
 		return nil, err
 	}
-	return &TopologyV1alpha1Client{client}, nil
+	return &SchedulingV1alpha1Client{client}, nil
 }
 
-// NewForConfigOrDie creates a new TopologyV1alpha1Client for the given config and
+// NewForConfigOrDie creates a new SchedulingV1alpha1Client for the given config and
 // panics if there is an error in the config.
-func NewForConfigOrDie(c *rest.Config) *TopologyV1alpha1Client {
+func NewForConfigOrDie(c *rest.Config) *SchedulingV1alpha1Client {
 	client, err := NewForConfig(c)
 	if err != nil {
 		panic(err)
@@ -76,9 +76,9 @@ func NewForConfigOrDie(c *rest.Config) *TopologyV1alpha1Client {
 	return client
 }
 
-// New creates a new TopologyV1alpha1Client for the given RESTClient.
-func New(c rest.Interface) *TopologyV1alpha1Client {
-	return &TopologyV1alpha1Client{c}
+// New creates a new SchedulingV1alpha1Client for the given RESTClient.
+func New(c rest.Interface) *SchedulingV1alpha1Client {
+	return &SchedulingV1alpha1Client{c}
 }
 
 func setConfigDefaults(config *rest.Config) {
@@ -94,7 +94,7 @@ func setConfigDefaults(config *rest.Config) {
 
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
-func (c *TopologyV1alpha1Client) RESTClient() rest.Interface {
+func (c *SchedulingV1alpha1Client) RESTClient() rest.Interface {
 	if c == nil {
 		return nil
 	}

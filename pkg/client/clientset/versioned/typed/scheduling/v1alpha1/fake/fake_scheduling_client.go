@@ -25,17 +25,17 @@ import (
 	testing "k8s.io/client-go/testing"
 )
 
-type FakeTopologyV1alpha1 struct {
+type FakeSchedulingV1alpha1 struct {
 	*testing.Fake
 }
 
-func (c *FakeTopologyV1alpha1) ResourcePolicies(namespace string) v1alpha1.ResourcePolicyInterface {
+func (c *FakeSchedulingV1alpha1) ResourcePolicies(namespace string) v1alpha1.ResourcePolicyInterface {
 	return newFakeResourcePolicies(c, namespace)
 }
 
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
-func (c *FakeTopologyV1alpha1) RESTClient() rest.Interface {
+func (c *FakeSchedulingV1alpha1) RESTClient() rest.Interface {
 	var ret *rest.RESTClient
 	return ret
 }

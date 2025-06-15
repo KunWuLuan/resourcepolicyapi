@@ -63,25 +63,25 @@ func NewFilteredResourcePolicyInformer(client versioned.Interface, namespace str
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.TopologyV1alpha1().ResourcePolicies(namespace).List(context.Background(), options)
+				return client.SchedulingV1alpha1().ResourcePolicies(namespace).List(context.Background(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.TopologyV1alpha1().ResourcePolicies(namespace).Watch(context.Background(), options)
+				return client.SchedulingV1alpha1().ResourcePolicies(namespace).Watch(context.Background(), options)
 			},
 			ListWithContextFunc: func(ctx context.Context, options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.TopologyV1alpha1().ResourcePolicies(namespace).List(ctx, options)
+				return client.SchedulingV1alpha1().ResourcePolicies(namespace).List(ctx, options)
 			},
 			WatchFuncWithContext: func(ctx context.Context, options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.TopologyV1alpha1().ResourcePolicies(namespace).Watch(ctx, options)
+				return client.SchedulingV1alpha1().ResourcePolicies(namespace).Watch(ctx, options)
 			},
 		},
 		&apisschedulingv1alpha1.ResourcePolicy{},

@@ -28,10 +28,10 @@ import (
 // fakeResourcePolicies implements ResourcePolicyInterface
 type fakeResourcePolicies struct {
 	*gentype.FakeClientWithList[*v1alpha1.ResourcePolicy, *v1alpha1.ResourcePolicyList]
-	Fake *FakeTopologyV1alpha1
+	Fake *FakeSchedulingV1alpha1
 }
 
-func newFakeResourcePolicies(fake *FakeTopologyV1alpha1, namespace string) schedulingv1alpha1.ResourcePolicyInterface {
+func newFakeResourcePolicies(fake *FakeSchedulingV1alpha1, namespace string) schedulingv1alpha1.ResourcePolicyInterface {
 	return &fakeResourcePolicies{
 		gentype.NewFakeClientWithList[*v1alpha1.ResourcePolicy, *v1alpha1.ResourcePolicyList](
 			fake.Fake,

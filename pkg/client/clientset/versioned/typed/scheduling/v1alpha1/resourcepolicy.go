@@ -57,7 +57,7 @@ type resourcePolicies struct {
 }
 
 // newResourcePolicies returns a ResourcePolicies
-func newResourcePolicies(c *TopologyV1alpha1Client, namespace string) *resourcePolicies {
+func newResourcePolicies(c *SchedulingV1alpha1Client, namespace string) *resourcePolicies {
 	return &resourcePolicies{
 		gentype.NewClientWithList[*schedulingv1alpha1.ResourcePolicy, *schedulingv1alpha1.ResourcePolicyList](
 			"resourcepolicies",

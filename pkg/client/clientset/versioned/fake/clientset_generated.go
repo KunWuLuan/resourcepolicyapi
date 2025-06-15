@@ -21,8 +21,8 @@ package fake
 
 import (
 	clientset "github.com/KunWuLuan/resourcepolicyapi/pkg/client/clientset/versioned"
-	topologyv1alpha1 "github.com/KunWuLuan/resourcepolicyapi/pkg/client/clientset/versioned/typed/scheduling/v1alpha1"
-	faketopologyv1alpha1 "github.com/KunWuLuan/resourcepolicyapi/pkg/client/clientset/versioned/typed/scheduling/v1alpha1/fake"
+	schedulingv1alpha1 "github.com/KunWuLuan/resourcepolicyapi/pkg/client/clientset/versioned/typed/scheduling/v1alpha1"
+	fakeschedulingv1alpha1 "github.com/KunWuLuan/resourcepolicyapi/pkg/client/clientset/versioned/typed/scheduling/v1alpha1/fake"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
@@ -89,7 +89,7 @@ var (
 	_ testing.FakeClient  = &Clientset{}
 )
 
-// TopologyV1alpha1 retrieves the TopologyV1alpha1Client
-func (c *Clientset) TopologyV1alpha1() topologyv1alpha1.TopologyV1alpha1Interface {
-	return &faketopologyv1alpha1.FakeTopologyV1alpha1{Fake: &c.Fake}
+// SchedulingV1alpha1 retrieves the SchedulingV1alpha1Client
+func (c *Clientset) SchedulingV1alpha1() schedulingv1alpha1.SchedulingV1alpha1Interface {
+	return &fakeschedulingv1alpha1.FakeSchedulingV1alpha1{Fake: &c.Fake}
 }
